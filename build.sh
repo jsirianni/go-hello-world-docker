@@ -2,8 +2,14 @@
 
 set -e
 
-GOOS=linux go build -o hello-world main.go 
+export CGO_ENABLED=0 
+export GOOS=linux
 
-docker build -t go-hello-world:latest .
+# Build Go binary
+go build -o hello-world main.go 
 
-docker run -it -p 8080:8080 go-hello-world:latest
+# Build Docker image
+docker build -t bmedora/go-hello-world:latest .
+
+# Run container
+docker run -it -p 8080:8080 bmedora/go-hello-world:latest
