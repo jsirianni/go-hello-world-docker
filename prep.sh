@@ -3,6 +3,7 @@
 minikube delete
 minikube start
 minikube addons enable ingress
+minikube addons enable metrics-server
 
 docker build -t bmedora/go-hello-world:latest .
 docker push bmedora/go-hello-world:latest
